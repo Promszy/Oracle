@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap');
+
+  :root {
+    --bg1: #ff9a8b;
+    --bg2: #ff6a88;
+    --bg3: #ff99ac;
+    --accent: #fff0f5;
+    --text: #3d1f2b;
+    --button: #ff4d6d;
+    --button-hover: #ff1e4d;
+  }
+
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
+    background-size: 300% 300%;
+    animation: gradientShift 12s ease infinite;
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+  }
+
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .page {
+    display: none;
+    text-align: center;
+    padding: 40px 30px;
+    max-width: 650px;
+    width: 90%;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    border-radius: 25px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    animation: fadeIn 1s ease;
+  }
+
+  .page.active {
+    display: block;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    color: var(--accent);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+
+  p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    font-weight: 300;
+    color: #fff;
+    margin-bottom: 30px;
+  }
+
+  .btn {
+    background: var(--button);
+    color: white;
+    border: none;
+    padding: 14px 35px;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+  }
+
+  .btn:hover {
+    background: var(--button-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 77, 109, 0.6);
+  }
+
+  .heart {
+    font-size: 3rem;
+    animation: heartbeat 1.5s infinite;
+    margin-top: 15px;
+  }
+
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .floating-hearts {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: -1;
+  }
+
+  .floating-hearts span {
+    position: absolute;
+    font-size: 20px;
+    color: rgba(255,255,255,0.4);
+    animation: float 8s linear infinite;
+  }
+
+  @keyframes float {
+    0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="floating-hearts">
+  <span style="left:10%; animation-delay:0s;">❤</span>
+  <span style="left:30%; animation-delay:2s;">❤</span>
+  <span style="left:50%; animation-delay:4s;">❤</span>
+  <span style="left:70%; animation-delay:1s;">❤</span>
+  <span style="left:85%; animation-delay:3s;">❤</span>
+</div>
+
+<div class="page active" id="page1">
+  <h1>My Feelings</h1>
+  <p>I love you, and it's not because of your face or your body</p>
+  <button class="btn" onclick="nextPage(1)">Next</button>
+</div>
+
+<div class="page" id="page2">
+  <h1>And More Than That</h1>
+  <p>And not because I am lonely or sad</p>
+  <p>Nor is it about filling a gap or feelings alone</p>
+  <p>It's about choosing you over and over again</p>
+  <button class="btn" onclick="nextPage(2)">Next</button>
+</div>
+
+<div class="page" id="page3">
+  <h1>Because You Matter</h1>
+  <p>But because I want to show you what you worth</p> 
+  <p>I wamt to show you what true love is</p>
+  <p>I want to make you feel special, spend time with you and make memories together</p>
+  <p>I want to go to places with you, go through challenges together and to let you know you have some you can lean on</p>
+  <p>I will always be loyal and faithful, and committed to you alone</p>
+  <p>I want to make you my world, the Queen of my kingdom and the Queen besides her king</p>
+  <p>I want use to grow old together, have beautiful kids, live a happy life forever</p>
+  <p>In everything you're MY QUEEN AND SAFEST PLACE AND THE ONE THAT HOLDS THE TREASURE BOX TO MY HEART</p>
+  <h1>I LOVE YOU MY PRINCESS ❤️💖</h1>
+  <div class="heart">❤</div>
+</div>
+
+<script>
+  function nextPage(current) {
+    document.getElementById('page' + current).classList.remove('active');
+    document.getElementById('page' + (current + 1)).classList.add('active');
+  }
+</script>
+
+</body>
+</html>
